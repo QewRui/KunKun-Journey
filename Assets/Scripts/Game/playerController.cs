@@ -163,4 +163,16 @@ public class playerController : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.CompareTag("Spike")) 
+        {
+            gameWindow.gameOver();
+        }
+        else if (collision.transform.CompareTag("NextLevelPoint")) 
+        {
+            gameWindow.nextLevel();
+        }
+    }
 }

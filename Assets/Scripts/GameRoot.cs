@@ -21,6 +21,6 @@ public class GameRoot : MonoBehaviour
         {
             canvas.GetChild(i).gameObject.SetActive(false);
         }
-        startWindow.gameObject.SetActive(true);
+        startWindow.setWindowState(true);
     }
 }
