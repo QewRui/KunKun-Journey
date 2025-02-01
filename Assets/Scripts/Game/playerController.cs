@@ -91,6 +91,7 @@ public class playerController : MonoBehaviour
 
             // Decrement the jump count after any jump
             jumpCount--;
+            playerAnimator.SetBool("isJump", true);
         }
         // Short jump: If short press "Space"
         else if (Input.GetKeyUp(KeyCode.Space)) 
@@ -98,6 +99,8 @@ public class playerController : MonoBehaviour
             if (playerRigidBody.velocity.y > 3f) 
             {
                 playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 3f);
+                playerAnimator.SetBool("isJump", true);
+
             }
         }
     }
@@ -126,6 +129,8 @@ public class playerController : MonoBehaviour
                 isDashing = false;
                 playerRigidBody.gravityScale = 1.5f; // Reset gravity to normal
                 playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y); // Stop horizontal movement
+                playerAnimator.SetBool("isDashing", false);
+
             }
             else
             {
@@ -143,6 +148,7 @@ public class playerController : MonoBehaviour
                 isDashing = true;
                 dashTimer = dashTime;
                 canDash = false; // Disable further dashes until grounded
+                playerAnimator.SetBool("isDashing", true);
             }
         }
     }
@@ -154,12 +160,15 @@ public class playerController : MonoBehaviour
         {
             jumpCount = 2;
             canDash = true;
+            playerAnimator.SetBool("isJump", false);
+
         }
         else 
         {
             if (jumpCount == 2) 
             {
                 jumpCount--;
+
             }
         }
     }
