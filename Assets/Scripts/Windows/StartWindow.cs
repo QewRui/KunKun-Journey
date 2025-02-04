@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartWindow : MonoBehaviour
+public class StartWindow : WindowRoot
 {
     public playerController playerController;
     public GameWindow gameWindow;
@@ -10,16 +10,16 @@ public class StartWindow : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        goGameWindow();
+        enterGame();
     }
 
-    private void goGameWindow() 
+    private void enterGame() 
     {
         if (Input.GetMouseButtonDown(0)) 
         {
             playerController.initPlayer();
-            gameObject.SetActive(false);
-            gameWindow.gameObject.SetActive(true);
+            setWindowState(false);
+            gameWindow.setWindowState(true);
         }
     }
 }
