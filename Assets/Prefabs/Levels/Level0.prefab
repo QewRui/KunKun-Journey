@@ -1656,7 +1656,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Press Spacebar \nTo Jump "
+  m_Text: "Press \"SpaceBar\" \nTo Jump "
 --- !u!212 &614372631858414807
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1914,7 +1914,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Press Shift\n   To Dash \n\n"
+  m_Text: "Press \"Shift\"\n   To Dash \n\n"
 --- !u!212 &1609545746295870693
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2383,7 +2383,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Press A & D To Move
+  m_Text: Press "A" & "D" To Move
 --- !u!212 &3563026973319609919
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2512,7 +2512,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Press 2 Time Spacebar
+  m_Text: 'Press "SpaceBar" TWICE
 
     To Double Jump'
 --- !u!212 &8721678091048072646
