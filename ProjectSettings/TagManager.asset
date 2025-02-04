@@ -6,6 +6,8 @@ TagManager:
   tags:
   - NextLevelPoint
   - Spike
+  - StartGameSign
+  - ExitGameSign
   layers:
   - Default
   - TransparentFX

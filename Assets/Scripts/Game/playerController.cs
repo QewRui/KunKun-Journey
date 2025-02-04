@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerController : MonoBehaviour
 {
@@ -33,12 +35,31 @@ public class playerController : MonoBehaviour
 
     public GameWindow gameWindow;
 
+    // Main Menu Interactions
+    private GameObject keyIconPlay;
+    private GameObject keyIconExit;
+    private bool isPlayerNearby;
+    private string objectTag = ""; // Store the nearby object tag
+
     public void initPlayer() 
     {
         playerScale = transform.localScale;
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerFeet = GetComponent<CapsuleCollider2D>();
         playerAnimator = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        isPlayerNearby = false;
+
+        // Find key icons by tag
+        keyIconPlay = GameObject.Find("f_button_play");
+        keyIconExit = GameObject.Find("f_button_exit");
+
+        // Hide key icons at start
+        if (keyIconPlay) keyIconPlay.SetActive(false);
+        if (keyIconExit) keyIconExit.SetActive(false);
     }
 
     private void Update()
@@ -48,6 +69,11 @@ public class playerController : MonoBehaviour
         playerJump();
         playerFall();
         isLanded();
+
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.F))
+        {
+            PerformInteraction();
+        }
     }
 
     // Control player movement (A: Left, D: Right)
@@ -179,9 +205,48 @@ public class playerController : MonoBehaviour
         {
             gameWindow.gameOver();
         }
-        else if (collision.transform.CompareTag("NextLevelPoint")) 
+        else if (collision.transform.CompareTag("NextLevelPoint"))
         {
             gameWindow.nextLevel();
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("StartGameSign"))
+        {
+            isPlayerNearby = true;
+            objectTag = "StartGameSign";
+            if (keyIconPlay) keyIconPlay.SetActive(true);
+        }
+        else if (other.CompareTag("ExitGameSign"))
+        {
+            isPlayerNearby = true;
+            objectTag = "ExitGameSign";
+            if (keyIconExit) keyIconExit.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("StartGameSign") || other.CompareTag("ExitGameSign"))
+        {
+            isPlayerNearby = false;
+            objectTag = "";
+            if (keyIconPlay) keyIconPlay.SetActive(false);
+            if (keyIconExit) keyIconExit.SetActive(false);
+        }
+    }
+
+    private void PerformInteraction()
+    {
+        if (objectTag == "StartGameSign")
+        {
+            gameWindow.nextLevel();
+        }
+        else if (objectTag == "ExitGameSign")
+        {
+            Application.Quit();
         }
     }
 }
