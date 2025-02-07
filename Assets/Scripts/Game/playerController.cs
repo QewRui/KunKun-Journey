@@ -9,7 +9,7 @@ public class playerController : MonoBehaviour
     // Movement
     // Player movement speed
     public float movementSpeed;
-
+    public float input;
 
     // Jump 
     // Player jump height of first jump
@@ -33,16 +33,34 @@ public class playerController : MonoBehaviour
     private CapsuleCollider2D playerFeet;
     private Animator playerAnimator;
 
-    public GameWindow gameWindow;
-
     // Main Menu Interactions
     private GameObject keyIconPlay;
     private GameObject keyIconExit;
     private bool isPlayerNearby;
     private string objectTag = ""; // Store the nearby object tag
 
+    // KnockBack Effect
+    public float knockBackForce;
+    public float knockBackCounter;
+    public float knockBackDuration;
+    public bool knockBackFromRight;
+
+    // Clamping position
+    private Camera mainCam;
+    private Vector2 screenBounds;
+    private float playerWidth;
+    private float playerHeight;
+
+    // Reference
+    public GameWindow gameWindow;
+
     public void initPlayer() 
     {
+        mainCam = Camera.main;
+        screenBounds = mainCam.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height));
+        playerWidth = GetComponent<SpriteRenderer>().bounds.extents.x;
+        playerHeight = GetComponent<SpriteRenderer>().bounds.extents.y;
+
         playerScale = transform.localScale;
         playerRigidBody = GetComponent<Rigidbody2D>();
         playerFeet = GetComponent<CapsuleCollider2D>();
@@ -64,31 +82,52 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
+        // To get the input direction
+        input = Input.GetAxisRaw("Horizontal");
+
         playerMove();
         playerDash();
         playerJump();
         playerFall();
         isLanded();
 
+        clampPosition();
+
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.F))
         {
-            PerformInteraction();
+            keyInteraction();
         }
     }
 
     // Control player movement (A: Left, D: Right)
     private void playerMove()
     {
-        if (Input.GetKey(KeyCode.D))
+        if (knockBackCounter <= 0)
         {
-            transform.localScale = playerScale;
-            playerRigidBody.velocity = new Vector2(movementSpeed, playerRigidBody.velocity.y);
-            playerAnimator.SetBool("isRun", true);
+            playerRigidBody.velocity = new Vector2(input * movementSpeed, playerRigidBody.velocity.y);
         }
-        else if (Input.GetKey(KeyCode.A))
+        else 
+        {
+            if (knockBackFromRight == true) 
+            {
+                playerRigidBody.velocity = new Vector2(-knockBackForce, 0);
+            }
+            if (knockBackFromRight == false) 
+            {
+                playerRigidBody.velocity = new Vector2(knockBackForce, 0);
+            }
+
+            knockBackCounter -= Time.deltaTime;
+        }
+
+        if (input < 0)
         {
             transform.localScale = new Vector3(-playerScale.x, playerScale.y, playerScale.z);
-            playerRigidBody.velocity = new Vector2(-movementSpeed, playerRigidBody.velocity.y);
+            playerAnimator.SetBool("isRun", true);
+        }
+        else if (input > 0)
+        {
+            transform.localScale = playerScale;
             playerAnimator.SetBool("isRun", true);
         }
         else 
@@ -238,7 +277,7 @@ public class playerController : MonoBehaviour
         }
     }
 
-    private void PerformInteraction()
+    private void keyInteraction()
     {
         if (objectTag == "StartGameSign")
         {
@@ -248,5 +287,15 @@ public class playerController : MonoBehaviour
         {
             Application.Quit();
         }
+    }
+
+    private void clampPosition()
+    {
+        // Clamp the player's X and Y position to stay within the screen boundaries
+        Vector3 clampedPosition = transform.position;
+        clampedPosition.x = Mathf.Clamp(clampedPosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
+        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
+
+        transform.position = clampedPosition;
     }
 }
