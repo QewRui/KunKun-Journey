@@ -291,10 +291,23 @@ public class playerController : MonoBehaviour
 
     private void clampPosition()
     {
-        // Clamp the player's X and Y position to stay within the screen boundaries
+        // Clamp player position within screen bounds
         Vector3 clampedPosition = transform.position;
         clampedPosition.x = Mathf.Clamp(clampedPosition.x, -screenBounds.x + playerWidth, screenBounds.x - playerWidth);
-        clampedPosition.y = Mathf.Clamp(clampedPosition.y, -screenBounds.y + playerHeight, screenBounds.y - playerHeight);
+
+        // Top boundary
+        if (transform.position.y > screenBounds.y - playerHeight)
+        {
+            clampedPosition.y = screenBounds.y - playerHeight;
+            playerRigidBody.velocity = new Vector2(playerRigidBody.velocity.x, 0); // Stop upward movement to prevent stick at the top
+        }
+
+        // Bottom boundary
+        if (transform.position.y < -screenBounds.y + playerHeight)
+        {
+            gameWindow.gameOver();
+            return;
+        }
 
         transform.position = clampedPosition;
     }
