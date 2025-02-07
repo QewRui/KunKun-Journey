@@ -6,7 +6,7 @@ public class GameWindow : WindowRoot
 {
     public GameObject player;
     public GameObject[] levels;
-    public GameObject deadWindow; 
+    public GameObject gameOverTip; 
 
     private int levelCount;
 
@@ -20,7 +20,7 @@ public class GameWindow : WindowRoot
     private void gameStart()
     {
         player.SetActive(true);
-        deadWindow.SetActive(false); // Hide dead window when game start
+        gameOverTip.SetActive(false);
     }
 
     private void delLevel()
@@ -28,7 +28,7 @@ public class GameWindow : WindowRoot
         Transform currentLevel = transform.Find("Level" + levelCount);
         if (currentLevel != null)
         {
-            Destroy(currentLevel.gameObject.gameObject); // <------ .gameObject.gameObject correct ma??
+            Destroy(currentLevel.gameObject.gameObject);
         }
     }
 
@@ -42,15 +42,17 @@ public class GameWindow : WindowRoot
     public void gameOver()
     {
         player.SetActive(false);
-        //deadWindow.SetActive(true);  // Show the dead window 
+        gameOverTip.SetActive(true);  // Show GameOver Tip
     }
 
     private void loadLevel()
     {
+        // Load the current level and set it as a child of GameWindow
         GameObject level = Instantiate(levels[levelCount]);
         level.name = "Level" + levelCount;
         level.transform.SetParent(transform, false);
 
+        // Position the player at the StartPoint of the new level
         Transform start = level.transform.Find("StartPoint");
         if (start != null)
         {
