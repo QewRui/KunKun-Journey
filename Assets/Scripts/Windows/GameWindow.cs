@@ -23,6 +23,8 @@ public class GameWindow : WindowRoot
         gameStart();
         loadLevel();
 
+        pauseMenu.gameObject.SetActive(false);
+
         // Find key icons by tag
         keyIconPlay = GameObject.Find("f_button_play");
         keyIconExit = GameObject.Find("f_button_exit");
