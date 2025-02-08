@@ -17,6 +17,8 @@ public class GameWindow : WindowRoot
     private bool isPlayerNearby;
     private string objectTag;
 
+    public Animator transitionAnim;
+
     public void Start()
     {
         levelCount = 0;
@@ -52,9 +54,11 @@ public class GameWindow : WindowRoot
 
     public void nextLevel()
     {
+        transitionAnim.SetTrigger("End");
         delLevel();
         levelCount++;
         loadLevel();
+        transitionAnim.SetTrigger("Start");
     }
 
     public void gameOver()
