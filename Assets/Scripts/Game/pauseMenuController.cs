@@ -6,6 +6,7 @@ public class pauseMenuController : MonoBehaviour
 {
     public GameObject pauseMenu;
     public GameWindow gameWindow;
+    public Animator transitionAnim;
 
     public void Pause() 
     {
@@ -15,10 +16,12 @@ public class pauseMenuController : MonoBehaviour
     
     public void Home() 
     {
+        transitionAnim.SetTrigger("End");
         pauseMenu.SetActive(false);
         gameWindow.delLevel();
         gameWindow.Start();
         Time.timeScale = 1;
+        transitionAnim.SetTrigger("Start");
     }
     
     public void Resume() 
@@ -29,8 +32,10 @@ public class pauseMenuController : MonoBehaviour
 
     public void Restart()
     {
+        transitionAnim.SetTrigger("End");
         pauseMenu.SetActive(false);
         gameWindow.respawn();
         Time.timeScale = 1;
+        transitionAnim.SetTrigger("Start");
     }
 }
