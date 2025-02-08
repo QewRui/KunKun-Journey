@@ -183,7 +183,7 @@ public class playerController : MonoBehaviour
         }
         else
         {
-            if (canDash && Input.GetKeyDown(KeyCode.LeftShift))
+            if (canDash && (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.Mouse1) ) )
             {
                 // Start dashing
                 isDashing = true;
