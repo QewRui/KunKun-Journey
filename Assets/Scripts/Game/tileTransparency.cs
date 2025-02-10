@@ -3,6 +3,7 @@ using UnityEngine.Tilemaps;
 
 public class tileTransparency : MonoBehaviour
 {
+    public float tileAlpha = 0.8f;
     private Tilemap tilemap;
 
     private void Start()
@@ -15,7 +16,7 @@ public class tileTransparency : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SetTileAlpha(0.8f); // Reduce transparency
+            SetTileAlpha(tileAlpha); // Reduce transparency
         }
     }
 

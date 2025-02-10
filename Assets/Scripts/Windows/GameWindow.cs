@@ -71,6 +71,12 @@ public class GameWindow : WindowRoot
 
     public void loadLevel()
     {
+        if (levelCount >= levels.Length)
+        {
+            Start();
+            return;
+        }
+
         // Load the current level and set it as a child of GameWindow
         GameObject level = Instantiate(levels[levelCount]);
         level.name = "Level" + levelCount;
