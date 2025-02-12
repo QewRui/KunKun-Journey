@@ -9,6 +9,7 @@ TagManager:
   - StartGameSign
   - ExitGameSign
   - KnockBackTrap
+  - Ground
   layers:
   - Default
   - TransparentFX
