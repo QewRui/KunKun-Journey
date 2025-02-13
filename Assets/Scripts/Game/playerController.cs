@@ -34,10 +34,9 @@ public class playerController : MonoBehaviour
     private Animator playerAnimator;
 
     // KnockBack Effect
-    public float knockBackForce;
-    public float knockBackCounter;
-    public float knockBackDuration;
-    public bool knockBackFromRight;
+    public float knockBackForce = 8f;
+    public bool isKnockBack;
+    public float knockBackDuration = 0.5f;
 
     // Clamping position
     private Camera mainCam;
@@ -78,38 +77,30 @@ public class playerController : MonoBehaviour
     // Control player movement (A: Left, D: Right)
     private void playerMove()
     {
-        if (knockBackCounter <= 0)
+        if (!isKnockBack)
         {
             playerRigidBody.velocity = new Vector2(input * movementSpeed, playerRigidBody.velocity.y);
+
+            if (input < 0)
+            {
+                transform.localScale = new Vector3(-playerScale.x, playerScale.y, playerScale.z);
+                playerAnimator.SetBool("isRun", true);
+            }
+            else if (input > 0)
+            {
+                transform.localScale = playerScale;
+                playerAnimator.SetBool("isRun", true);
+            }
+            else
+            {
+                playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
+                playerAnimator.SetBool("isRun", false);
+            }
         }
         else 
         {
-            if (knockBackFromRight == true) 
-            {
-                playerRigidBody.velocity = new Vector2(-knockBackForce, 0);
-            }
-            if (knockBackFromRight == false) 
-            {
-                playerRigidBody.velocity = new Vector2(knockBackForce, 0);
-            }
-
-            knockBackCounter -= Time.deltaTime;
-        }
-
-        if (input < 0)
-        {
-            transform.localScale = new Vector3(-playerScale.x, playerScale.y, playerScale.z);
-            playerAnimator.SetBool("isRun", true);
-        }
-        else if (input > 0)
-        {
-            transform.localScale = playerScale;
-            playerAnimator.SetBool("isRun", true);
-        }
-        else 
-        {
-            playerRigidBody.velocity = new Vector2(0, playerRigidBody.velocity.y);
-            playerAnimator.SetBool("isRun", false);
+            var lerpedXVelocity = Mathf.Lerp(playerRigidBody.velocity.x, 0f, Time.deltaTime * 3);
+            playerRigidBody.velocity = new Vector2(lerpedXVelocity, playerRigidBody.velocity.y);
         }
     }
 
@@ -263,5 +254,24 @@ public class playerController : MonoBehaviour
         }
 
         transform.position = clampedPosition;
+    }
+
+    public void playerKnockBack(Transform t) 
+    {
+        var dir = transform.position - t.position;
+
+        isDashing = false;
+        playerAnimator.SetBool("isDashing", false);
+        playerRigidBody.gravityScale = 1.5f; // Reset gravity
+
+        isKnockBack = true;
+        playerRigidBody.velocity = dir.normalized * knockBackForce;
+        StartCoroutine(unKnockBack());
+    }
+
+    private IEnumerator unKnockBack() 
+    {
+        yield return new WaitForSeconds(knockBackDuration);
+        isKnockBack = false;
     }
 }

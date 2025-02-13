@@ -6,17 +6,10 @@ public class knockBackController : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player") 
+        var player = collision.collider.GetComponent<playerController>();
+        if (player != null) 
         {
-            collision.gameObject.GetComponent<playerController>().knockBackCounter = collision.gameObject.GetComponent<playerController>().knockBackDuration;
-            if (collision.transform.position.x <= transform.position.x) 
-            {
-                collision.gameObject.GetComponent<playerController>().knockBackFromRight = true;
-            }
-            if (collision.transform.position.x > transform.position.x) 
-            {
-                collision.gameObject.GetComponent<playerController>().knockBackFromRight = false;
-            }
+            player.playerKnockBack(transform);
         }
     }
 }
