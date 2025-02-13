@@ -1005,10 +1005,9 @@ MonoBehaviour:
   jumpHeight2: 5.8
   dashSpeed: 5
   dashTime: 0.2
-  knockBackForce: 3
-  knockBackCounter: 0
-  knockBackDuration: 0.2
-  knockBackFromRight: 0
+  knockBackForce: 5
+  isKnockBack: 0
+  knockBackDuration: 0.5
   gameWindow: {fileID: 2104663770}
 --- !u!61 &522414551
 BoxCollider2D:
