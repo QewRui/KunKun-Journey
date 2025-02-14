@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &5951629884884089457
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -734,6 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &5341695325617527786
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -1158,6 +1160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &3688429088992294782
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -1709,6 +1712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &3225980561672541119
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -2032,6 +2036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &4555110047498281821
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -2355,6 +2360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &5412753568500038199
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -2587,6 +2593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &1221055569030216657
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -2880,6 +2887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &7776997276136856626
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -3203,6 +3211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &7779071072824556344
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -3316,6 +3325,7 @@ Transform:
   - {fileID: 5294160626055927110}
   - {fileID: 631187537291305585}
   - {fileID: 5365069635556017694}
+  - {fileID: 566233308104442444}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5511,6 +5521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &5064007996913197830
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -5864,6 +5875,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &7530912272537665325
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -5886,6 +5898,87 @@ CompositeCollider2D:
     m_Paths: []
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
+--- !u!1 &6442558522169061358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566233308104442444}
+  - component: {fileID: 611528587393854204}
+  m_Layer: 0
+  m_Name: bg_img
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &566233308104442444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6442558522169061358}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 85, y: 85, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5900999712235963911}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &611528587393854204
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6442558522169061358}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: fecd6e8159b85834683c98182b75b51b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 20, y: 10}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &6531865508854353615
 GameObject:
   m_ObjectHideFlags: 0
@@ -6177,6 +6270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &1487470106339347233
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -6560,6 +6654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &7422873606945981825
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -6973,6 +7068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &6324587475749442189
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -7226,6 +7322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &6328856833155559498
 CompositeCollider2D:
   m_ObjectHideFlags: 0
@@ -7519,6 +7616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 472bcf497bfd22e4284c3abc98faa36a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileAlpha: 0.8
 --- !u!66 &7248345898905905192
 CompositeCollider2D:
   m_ObjectHideFlags: 0

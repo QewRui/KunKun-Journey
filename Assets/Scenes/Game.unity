@@ -1730,7 +1730,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a0241f369f63fd849b07fe96f9d6f6c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6cec73d9223eb0043ab89e42b04481a5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2219,6 +2219,7 @@ MonoBehaviour:
   - {fileID: 5294160626286124356, guid: 606d2a3b10c51454a816c387148751bb, type: 3}
   - {fileID: 4569350483309669311, guid: 6cde1d309dce54046bf479b92a99ecb4, type: 3}
   - {fileID: 4109205417316232811, guid: fa95063bfc3373c4e914e84b8291920d, type: 3}
+  - {fileID: 3963755345813161854, guid: a96f34c1b90066941a05ef59ea60e54a, type: 3}
   gameOverTip: {fileID: 326242848}
   pauseMenu: {fileID: 136944191}
   levelCount: 0
