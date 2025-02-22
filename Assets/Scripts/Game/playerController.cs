@@ -209,6 +209,7 @@ public class playerController : MonoBehaviour
     {
         if (collision.transform.CompareTag("Spike")) 
         {
+            isKnockBack = false;
             gameWindow.gameOver();
         }
         else if (collision.transform.CompareTag("NextLevelPoint"))
