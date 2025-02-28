@@ -186,6 +186,7 @@ public class playerController : MonoBehaviour
                 dashTimer = dashTime;
                 canDash = false; // Disable further dashes until grounded
                 playerAnimator.SetBool("isDashing", true);
+                audioSources = GetComponents<AudioSource>();
                 audioSources[0].Play();
             }
         }
