@@ -89,7 +89,18 @@ public class GameWindow : WindowRoot
         if (start != null)
         {
             player.transform.localPosition = start.localPosition;
-            bgmAudioSource.UnPause(); // Resume BGM from where it was paused
+            // Check if the current level is level 5
+            if (levelCount == 5) // Assuming levels are 1-indexed (level 5 is index 5)
+            {
+                bgmAudioSource.Stop(); // Stop the BGM for level 5
+            }
+            else
+            {
+                if (!bgmAudioSource.isPlaying) // Ensure BGM is playing for other levels
+                {
+                    bgmAudioSource.Play(); // Play the BGM if it's not already playing
+                }
+            }
         }
     }
 
